@@ -1,14 +1,9 @@
-//Changing the sprites' animations
-//position and transformations: rotation, scale, mirror
-//move the mouse and click
-//press and hold the up and down keys
-
 var zombie;
 
 function setup() {
   createCanvas(800, 300);
 
-  //create a sprite and add the 3 animations
+  //create a sprite and add the 2 animations
   zombie = createSprite(400, 150, 50, 100);
 
   //label, first frame, last frame
@@ -29,44 +24,32 @@ function draw() {
   background(255, 255, 255);
 
   //if mouse is to the left
-  if(mouseX < zombie
-.position.x - 10) {
-    zombie
-.changeAnimation('moving');
+  if(mouseX < zombie.position.x - 10) {
+    zombie.changeAnimation('moving');
     //flip horizontally
-    zombie
-.mirrorX(-1);
+    zombie.mirrorX(-1);
     //negative x velocity: move left
-    zombie
-.velocity.x = -2;
+    zombie.velocity.x = -2;
   }
-  else if(mouseX > zombie
-.position.x + 10) {
-    zombie
-.changeAnimation('moving');
+  else if(mouseX > zombie.position.x + 10) {
+    zombie.changeAnimation('moving');
     //unflip
-    zombie
-.mirrorX(1);
-    zombie
-.velocity.x = 2;
+    zombie.mirrorX(1);
+    zombie.velocity.x = 2;
   }
   else {
     //if close to the mouse, don't move
-    zombie
-.changeAnimation('floating');
-    zombie
-.velocity.x = 0;
+    zombie.changeAnimation('floating');
+    zombie.velocity.x = 0;
   }
 
   //up and down keys to change the scale
   //note that scaling the image quality deteriorates
   //and scaling to a negative value flips the image
   if(keyIsDown(UP_ARROW))
-    zombie
-.scale += 0.05;
+    zombie.scale += 0.05;
   if(keyIsDown(DOWN_ARROW))
-    zombie
-.scale -= 0.05;
+    zombie.scale -= 0.05;
 
   //draw the sprite
   drawSprites();
