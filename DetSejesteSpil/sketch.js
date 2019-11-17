@@ -13,6 +13,7 @@ function setup() {
 		}
 		rect(0, 0, 40, 40);
 	}
+	defineSprite1();
 }
 
 function draw() {
@@ -22,7 +23,12 @@ function draw() {
 	sprite1.position.y = mouseY;
 
 	sprite1.displace(sprite2);
-
+	if(sprite2.position.x < 0){
+		sprite2.position.x = sprite2.position.x;
+	}
+	if(sprite2.overlap(sprite3)){
+		sprite1.newFunction(3);
+	}
 	drawSprites();	
 
 }
